@@ -1,12 +1,11 @@
 {
   "tasks": {
-    "build": "silverbullet plug:compile -c deno.jsonc plantuml.plug.yaml",
-    "watch": "silverbullet plug:compile -w -c deno.jsonc plantuml.plug.yaml"
+    "build": "deno run -A https://github.com/silverbulletmd/silverbullet/releases/download/edge/plug-compile.js -c deno.jsonc plantuml.plug.yaml",
+    "watch": "deno run -A https://github.com/silverbulletmd/silverbullet/releases/download/edge/plug-compile.js -w -c deno.jsonc plantuml.plug.yaml"
   },
-  // "importMap": "import_map.json"
   "imports": {
-    "@silverbulletmd/silverbullet": "jsr:@silverbulletmd/silverbullet@^0.10.1",
+    "@silverbulletmd/silverbullet": "jsr:@silverbulletmd/silverbullet@^2.0.0",
     "handlebars": "https://esm.sh/handlebars",
-    "$sb/": "https://deno.land/x/silverbullet@0.10.1/plug-api/"
+    "$sb/": "https://deno.land/x/silverbullet@2.0.0/plug-api/"
   }
 }

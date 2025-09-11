@@ -4,7 +4,17 @@ This plug adds basic [PlantUML](https://www.plantuml.com) support to Silver Bull
 
 ## Installation
 
-Run the {[Plugs: Add]} command and paste in: `github:logeshg5/silverbullet-plantuml/plantuml.plug.js`
+The plug is installed like any other plug using SpaceLua. Just add `ghr:LogeshG5/silverbullet-plantuml` to the plugs array in your CONFIG page.
+
+```space-lua
+config.set {
+  plugs = {
+  "ghr:LogeshG5/silverbullet-plantuml"
+  }
+}
+```
+
+Run `Plugs: Update` command and off you go!
 
 ## Configuration
 
@@ -18,9 +28,8 @@ There are three types of configuration possible
 
 Add this to your `SETTINGS.md`
 
-```yaml
-plantuml:
-  serverurl: https://plantuml.com
+```space-lua
+config.set("plantuml", {serverurl="https://plantuml.com"})
 ```
 
 This configuration uses the offical PlantUML server to generate the diagram. If you do not want to send the data to PlantUML server check other configuration options.
@@ -37,9 +46,8 @@ java -jar /usr/local/bin/plantuml.jar -picoweb:8080
 
 Add this to your `SETTINGS.md`
 
-```yaml
-plantuml:
-  serverurl: http://localhost:8080
+```space-lua
+config.set("plantuml", {serverurl="http://localhost:8080"})
 ```
 
 This configuration uses the local PlantUML server to generate the diagram. This doesn't send the data to PlantUML server. You will have to keep the local server running always.
@@ -67,9 +75,8 @@ chmod a+x /usr/local/bin/gen_plantuml_svg
 
 In your `SETTINGS.md` configure the path to the generator.
 
-```yaml
-plantuml:
-  generator: /usr/local/bin/gen_plantuml_svg
+```space-lua
+config.set("plantuml", {generator="/usr/local/bin/gen_plantuml_svg"})
 ```
 
 This helper script is needed as I couldn't get to call the plantuml.jar directly from this plugin.
