@@ -19,7 +19,7 @@ export async function pumlserver(serverurl: string, uml: string) {
     let sep = "/";
     if (serverurl.endsWith("/"))
       sep = "";
-    let url = serverurl + sep + 'plantuml/svg/' + encoded;
+    let url = serverurl + sep + 'svg/' + encoded;
     console.log("silverbullet-plantuml: requesting", url);
     const response = await fetch(url);
     if (!response.ok) {
@@ -37,7 +37,7 @@ export async function widget(
   bodyText: string,
 ) {
 
-  const userConfig = await system.getConfig("plantuml", { serverurl: 'https://plantuml.com' });
+  const userConfig = await system.getConfig("plantuml", { serverurl: 'https://plantuml.com/plantuml' });
 
   let result: string = bodyText;
   if ('serverurl' in userConfig) {

@@ -29,7 +29,7 @@ There are three types of configuration possible
 Add this to your `SETTINGS.md`
 
 ```space-lua
-config.set("plantuml", {serverurl="https://plantuml.com"})
+config.set("plantuml", {serverurl="https://plantuml.com/plantuml"})
 ```
 
 This configuration uses the offical PlantUML server to generate the diagram. If you do not want to send the data to PlantUML server check other configuration options.
