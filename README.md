@@ -18,23 +18,44 @@ Run `Plugs: Update` command and off you go!
 
 ## Configuration
 
-There are three types of configuration possible
+There are four types of configuration possible
 
 1. [Remote Server](#1-remote-server-configuration)
-2. [Local Server](#2-local-server-configuration)
-3. [Script](#3-script-configuration)
+2. [Docker Server](#2-docker-server-configuration)
+3. [Local Server](#3-local-server-configuration)
+4. [Script](#4-script-configuration)
 
 ### 1. Remote Server Configuration
 
 Add this to your `SETTINGS.md`
 
 ```space-lua
-config.set("plantuml", {serverurl="https://plantuml.com"})
+config.set("plantuml", {serverurl="https://plantuml.com/plantuml"})
 ```
 
 This configuration uses the offical PlantUML server to generate the diagram. If you do not want to send the data to PlantUML server check other configuration options.
 
-### 2. Local Server Configuration
+### 2. Docker Server Configuration
+
+Deploy your own PlantUML server with the [offical plantuml/plantuml-server](https://hub.docker.com/r/plantuml/plantuml-server) Docker image.
+
+Use one of the following commands:
+
+```bash
+docker run -d -p 8080:8080 plantuml/plantuml-server:jetty
+docker run -d -p 8080:8080 plantuml/plantuml-server:tomcat
+```
+
+Add this to your `SETTINGS.md`
+
+```space-lua
+config.set("plantuml", {serverurl="http://{ip or hostname}"})
+```
+
+> **Note**
+> You might want to have a reverse proxy such as [Traefik](https://doc.traefik.io/traefik/), or [Caddy](https://caddyserver.com/) in front of the PlantUML container.
+
+### 3. Local Server Configuration
 
 [PlantUML](https://plantuml.com/download) needs to be installed in your machine at e.g., `/usr/local/bin/plantuml.jar`. Ensure you have the JDK installed on your system.
 
@@ -52,7 +73,7 @@ config.set("plantuml", {serverurl="http://localhost:8080"})
 
 This configuration uses the local PlantUML server to generate the diagram. This doesn't send the data to PlantUML server. You will have to keep the local server running always.
 
-### 3. Script Configuration
+### 4. Script Configuration
 
 [PlantUML](https://plantuml.com/download) needs to be installed in your machine at e.g., `/usr/local/bin/plantuml.jar`. Ensure you have the JDK installed on your system.
 
